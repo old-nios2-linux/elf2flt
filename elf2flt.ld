@@ -63,6 +63,10 @@ R_RODAT		*(.gnu.linkonce.r*)
 		*(.eh_frame)
 		*(.gcc_except_table)
 
+		/* nios2 need gp */
+		_gp = ABSOLUTE(ALIGN(16) + 0x7ff0);
+		PROVIDE(gp = _gp);
+
 		/* Microblaze has .sdata and .sbss (small bss).  They must
 		   be contiguous, so please don't move any of this. JW */
 		_ssrw = . ;			
